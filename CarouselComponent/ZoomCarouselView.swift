@@ -61,22 +61,71 @@ struct ZoomContentView: View {
     }
     
     var body: some View {
-        ZoomCarouselView(contentCount: 5) { index in
-            RoundedRectangle(cornerRadius: 2)
-                .fill(colors[index])
-                .foregroundColor(Color.blue)
-                .overlay(HStack {
-                    Text("\(index)").foregroundColor(.white)
-                    Button(action: {
-                        cardAction(index: index)
-                    }, label: {
-                        Text("Button \(index)")
-                    })
-                })
-        }
-        .frame(width: UIScreen.main.bounds.width * 0.8, height: 200)
+        GeometryReader(content: { geometry in
+            ZoomCarouselView(contentCount: 5) { index in
+                Card1(color: colors[index], index: index)
+            }
+            .padding([.leading], geometry.size.width * 0.1)
+            .frame(width: geometry.size.width * 0.9, height: 200)
+        })
+        
     }
 }
+
+
+struct Card1: View {
+    let color:Color
+    let index: Int
+    
+    private func cardAction(index: Int) {
+        print("We clicked on \(index) card action")
+    }
+    
+    var body: some View {
+        Image("card-\(index)")
+            .resizable()
+        
+        
+//        RoundedRectangle(cornerRadius: 2)
+//            .fill(color)
+//            .foregroundColor(Color.blue)
+//            .overlay(HStack {
+//                Text("\(index)").foregroundColor(.white)
+//                Button(action: {
+//                    cardAction(index: index)
+//                }, label: {
+//                    Text("Button \(index)")
+//                })
+//            })
+    }
+}
+
+struct Card2: View {
+    let color:Color
+    let index: Int
+    
+    private func cardAction(index: Int) {
+        print("We clicked on \(index) card action")
+    }
+    
+    var body: some View {
+        Image("card-\(index)")
+            .resizable()
+//        RoundedRectangle(cornerRadius: 2)
+//            .fill(color)
+//            .foregroundColor(Color.red)
+//            .overlay(HStack {
+//                Text("\(index)").foregroundColor(.white)
+//                Button(action: {
+//                    cardAction(index: index)
+//                }, label: {
+//                    Text("Button \(index)")
+//                })
+//            })
+    }
+}
+
+
 
 struct ZoomContentView_Previews: PreviewProvider {
     static var previews: some View {

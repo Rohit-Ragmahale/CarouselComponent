@@ -14,7 +14,7 @@
 		436BD4122BCA7197000AEF6D /* CarouselComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436BD4112BCA7197000AEF6D /* CarouselComponentTests.swift */; };
 		436BD41C2BCA7197000AEF6D /* CarouselComponentUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436BD41B2BCA7197000AEF6D /* CarouselComponentUITests.swift */; };
 		436BD41E2BCA7197000AEF6D /* CarouselComponentUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436BD41D2BCA7197000AEF6D /* CarouselComponentUITestsLaunchTests.swift */; };
-		436BD42B2BCA95A9000AEF6D /* Carousel1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436BD42A2BCA95A9000AEF6D /* Carousel1.swift */; };
+		436BD42B2BCA95A9000AEF6D /* ZoomCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436BD42A2BCA95A9000AEF6D /* ZoomCarouselView.swift */; };
 		436BD42D2BCA9A05000AEF6D /* CarouselNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436BD42C2BCA9A05000AEF6D /* CarouselNew.swift */; };
 		436BD42F2BCD382F000AEF6D /* Offset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 436BD42E2BCD382F000AEF6D /* Offset.swift */; };
 /* End PBXBuildFile section */
@@ -47,7 +47,7 @@
 		436BD4172BCA7197000AEF6D /* CarouselComponentUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarouselComponentUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		436BD41B2BCA7197000AEF6D /* CarouselComponentUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselComponentUITests.swift; sourceTree = "<group>"; };
 		436BD41D2BCA7197000AEF6D /* CarouselComponentUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselComponentUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		436BD42A2BCA95A9000AEF6D /* Carousel1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Carousel1.swift; sourceTree = "<group>"; };
+		436BD42A2BCA95A9000AEF6D /* ZoomCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomCarouselView.swift; sourceTree = "<group>"; };
 		436BD42C2BCA9A05000AEF6D /* CarouselNew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselNew.swift; sourceTree = "<group>"; };
 		436BD42E2BCD382F000AEF6D /* Offset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Offset.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,8 +102,8 @@
 			children = (
 				436BD4002BCA7196000AEF6D /* CarouselComponentApp.swift */,
 				436BD4022BCA7196000AEF6D /* ContentView.swift */,
-				436BD42A2BCA95A9000AEF6D /* Carousel1.swift */,
 				436BD42C2BCA9A05000AEF6D /* CarouselNew.swift */,
+				436BD42A2BCA95A9000AEF6D /* ZoomCarouselView.swift */,
 				436BD4042BCA7197000AEF6D /* Assets.xcassets */,
 				436BD4062BCA7197000AEF6D /* Preview Content */,
 				436BD42E2BCD382F000AEF6D /* Offset.swift */,
@@ -269,7 +269,7 @@
 				436BD42D2BCA9A05000AEF6D /* CarouselNew.swift in Sources */,
 				436BD42F2BCD382F000AEF6D /* Offset.swift in Sources */,
 				436BD4032BCA7196000AEF6D /* ContentView.swift in Sources */,
-				436BD42B2BCA95A9000AEF6D /* Carousel1.swift in Sources */,
+				436BD42B2BCA95A9000AEF6D /* ZoomCarouselView.swift in Sources */,
 				436BD4012BCA7196000AEF6D /* CarouselComponentApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

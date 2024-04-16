@@ -33,11 +33,6 @@ struct ZStackContentView<Content: View>: View {
      
     var contentCount: Int
     var content: (Int) -> Content
-    
-//    private func opacityFor(index: Int) {
-//        
-//
-//    }
     let colors: [Color] = [.red, .orange, .blue, .teal, .mint, .green, .gray, .indigo, .black]
     var body: some View {
         VStack {
