@@ -14,42 +14,78 @@ struct ZoomCarouselView<Content: View>: View {
     @State private var currentIndex = 0
     @State private var displacement: Double = 0
     @State private var position: Double = 0
-
-    var body: some View {
-        GeometryReader { geometry in
-            HStack(spacing: 0) {
-                ForEach(0..<self.contentCount, id: \.self) { index in
-                    self.content(index)
-                        .frame(width: geometry.size.width, height: geometry.size.height)
-                        .scaleEffect(self.scaleEffect(for: index))
-                        .offset(x: displacement * 10)
-                        .onTapGesture {
-                            self.currentIndex = index
-                        }
-                }
-            }
-            .offset(x: -CGFloat(self.currentIndex) * geometry.size.width)
-            .animation(.spring())
-            .gesture(
-                DragGesture()
-                    .onChanged({ value in
-                        self.displacement =  self.position + value.translation.width/10
-                    })
-                    .onEnded({ value in
-                        self.displacement = 0
-                        if value.translation.width < 0 && self.currentIndex < self.contentCount - 1 {
-                            self.currentIndex += 1
-                        } else if value.translation.width > 0 && self.currentIndex > 0 {
-                            self.currentIndex -= 1
-                        }
-                    })
-            )
+    
+    @State private var viewWidth: CGFloat = 0.0
+    @State private var cardWidth: CGFloat = 0.0
+    
+    @State private var isDragging = false
+    
+    func getTop(index: Int) -> CGFloat {
+        
+        if isDragging {
+            let val = (Int(abs(self.displacement)) % 40)
+            let val2 = CGFloat(val > 40 ? 40 : val)
+            return self.currentIndex == index ? val2 : -val2
+        } else {
+            return self.currentIndex == index ? 0 : 40
         }
+        
+    }
+    
+    
+    var body: some View {
+        HStack {
+            Spacer().frame(minWidth: 50, maxWidth: 50)
+            GeometryReader { geometry in
+                HStack(spacing: 10) {
+                    ForEach(0..<self.contentCount, id: \.self) { index in
+                        self.content(index)
+                            .frame(width: geometry.size.width, height: geometry.size.height)
+                            .scaleEffect(self.scaleEffect(for: index))
+                            .offset(x: displacement * 10, y: getTop(index: index))
+                            .onTapGesture {
+                                self.currentIndex = index
+                            }.onAppear {
+                                print("card \(geometry.size.width)")
+                            }
+                            .animation(.spring())
+                    }
+                }.onAppear {
+                    self.viewWidth = geometry.size.width
+                    print(viewWidth)
+                }
+                .offset(x: -(CGFloat(self.currentIndex) * (geometry.size.width + 10)))
+                //.animation(.spring())
+                .gesture(
+                    DragGesture()
+                        .onChanged({ value in
+                            self.displacement = value.translation.width/10
+                            print(self.displacement)
+                            isDragging = true
+                            
+                        })
+                        .onEnded({ value in
+                            isDragging = false
+                            //print(value.translation.width)
+                            self.position = self.displacement
+                            self.displacement = 0
+                            if value.translation.width < 0 && self.currentIndex < self.contentCount - 1 {
+                                self.currentIndex += 1
+                            } else if value.translation.width > 0 && self.currentIndex > 0 {
+                                self.currentIndex -= 1
+                            }
+                        })
+                )
+                .background(Color(.yellow))
+            }
+            Spacer().frame(minWidth: 50, maxWidth: 50)
+        }
+        .clipped()
     }
 
     private func scaleEffect(for index: Int) -> CGFloat {
         let delta = abs(currentIndex - index)
-        return delta == 0 ? 1.0 : 0.85
+        return delta == 0 ? 1.0 : 1.0
     }
 }
 
@@ -62,11 +98,13 @@ struct ZoomContentView: View {
     
     var body: some View {
         GeometryReader(content: { geometry in
-            ZoomCarouselView(contentCount: 5) { index in
+            ZoomCarouselView(contentCount: 2) { index in
                 Card1(color: colors[index], index: index)
             }
-            .padding([.leading], geometry.size.width * 0.1)
-            .frame(width: geometry.size.width * 0.9, height: 200)
+            .onAppear {
+                print("container \(geometry.size.width)")
+            }
+            .frame(width: geometry.size.width , height: 200)
         })
         
     }

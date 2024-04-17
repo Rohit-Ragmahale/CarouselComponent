@@ -1,14 +1,14 @@
 import SwiftUI
 
 
-struct Item: Identifiable {
+struct Item1: Identifiable {
     var id: Int
     var title: String
     var color: Color
 }
 
 class Store: ObservableObject {
-    @Published var items: [Item]
+    @Published var items: [Item1]
     
     let colors: [Color] = [.red, .orange, .blue, .teal, .mint, .green, .gray, .indigo, .black]
 
@@ -16,7 +16,7 @@ class Store: ObservableObject {
     init() {
         items = []
         for i in 0...7 {
-            let new = Item(id: i, title: "Item \(i)", color: colors[i])
+            let new = Item1(id: i, title: "Item \(i)", color: colors[i])
             items.append(new)
         }
     }

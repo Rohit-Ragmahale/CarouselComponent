@@ -19,16 +19,10 @@ let colors: [Color] = [.red, .orange, .blue, .teal, .mint, .green, .gray, .indig
 struct CarouselComponentApp: App {
     var body: some Scene {
         WindowGroup {
-            
-            
-           
-                ZoomContentView()
-            
-            
-                
-                
-                
-            
+            ZoomContentView()
+  
         }
     }
 }
+
+
